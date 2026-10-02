@@ -1,0 +1,110 @@
+{
+  "pipeline": "Geo-Gap Analyzer \u2014 Person 1 Ground-Truth Merit Engine",
+  "status": "completed",
+  "categories": [
+    "All_Beauty",
+    "Beauty_and_Personal_Care"
+  ],
+  "tables": {
+    "product_dim": {
+      "rows": 1141504
+    },
+    "brand_map": {
+      "rows": 156923
+    },
+    "product_brand": {
+      "rows": 1076397
+    },
+    "reviews_enriched": {
+      "rows": 24363116
+    },
+    "category_ref_date": {
+      "rows": 2
+    },
+    "merit_product": {
+      "rows": 1141296
+    },
+    "merit_brand": {
+      "rows": 147299
+    },
+    "leaderboard_product": {
+      "rows": 200
+    },
+    "leaderboard_brand": {
+      "rows": 200
+    },
+    "trend_category_monthly": {
+      "rows": 544
+    },
+    "trend_entity_quarterly": {
+      "rows": 1062
+    },
+    "recency_momentum_product": {
+      "rows": 473013
+    }
+  },
+  "exports": {
+    "merit_product.parquet": {
+      "exists": true,
+      "size_bytes": 56391720
+    },
+    "merit_brand.parquet": {
+      "exists": true,
+      "size_bytes": 9545099
+    },
+    "leaderboard_product.parquet": {
+      "exists": true,
+      "size_bytes": 32096
+    },
+    "leaderboard_brand.parquet": {
+      "exists": true,
+      "size_bytes": 17674
+    },
+    "trend_category_monthly.parquet": {
+      "exists": true,
+      "size_bytes": 10297
+    },
+    "trend_entity_quarterly.parquet": {
+      "exists": true,
+      "size_bytes": 16683
+    },
+    "recency_momentum_product.parquet": {
+      "exists": true,
+      "size_bytes": 7833116
+    },
+    "brand_map.parquet": {
+      "exists": true,
+      "size_bytes": 4464680
+    },
+    "product_brand.parquet": {
+      "exists": true,
+      "size_bytes": 12050894
+    },
+    "product_dim.parquet": {
+      "exists": true,
+      "size_bytes": 63374587
+    }
+  },
+  "merit": {
+    "product": {
+      "All_Beauty": {
+        "total_entities": 112565,
+        "ranked_entities": 27232
+      },
+      "Beauty_and_Personal_Care": {
+        "total_entities": 1028731,
+        "ranked_entities": 389695
+      }
+    },
+    "brand": {
+      "All_Beauty": {
+        "total_entities": 29550,
+        "ranked_entities": 14383
+      },
+      "Beauty_and_Personal_Care": {
+        "total_entities": 117749,
+        "ranked_entities": 71833
+      }
+    }
+  }
+}

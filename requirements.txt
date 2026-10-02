@@ -1,0 +1,10 @@
+datasets
+huggingface_hub
+duckdb
+pyarrow
+pandas
+numpy
+rapidfuzz
+vaderSentiment
+pytest
+tqdm
