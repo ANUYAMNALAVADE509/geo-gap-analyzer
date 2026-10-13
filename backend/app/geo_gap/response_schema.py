@@ -20,6 +20,14 @@ class LLMResponse:
     response_text: str
     product_mentions: List[LLMProductMention]
 
+    prompt_id: Optional[str] = None
+    base_query_id: Optional[str] = None
+    persona: Optional[str] = None
+    target_brands: Optional[List[str]] = None
+    comparison_brands: Optional[List[str]] = None
+    run_id: Optional[str] = None
+    timestamp_utc: Optional[str] = None
+
     def to_dict(self):
         data = asdict(self)
 

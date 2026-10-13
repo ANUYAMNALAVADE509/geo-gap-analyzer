@@ -48,6 +48,59 @@ def save_responses(
 
     return output_path
 
+def append_response(
+    response: LLMResponse,
+    filename: str,
+    *,
+    deduplicate: bool = False,
+) -> Path:
+    """
+    Append one LLM response to a JSONL file.
+
+    If deduplicate=True and prompt_id is present, skip an append
+    when the same prompt_id, provider, and model already exist.
+    """
+
+    if not filename.endswith(".jsonl"):
+        raise ValueError("filename must end with .jsonl")
+
+    output_path = OUTPUT_DIR / filename
+    response_data = response.to_dict()
+
+    if deduplicate and response_data.get("prompt_id"):
+        if output_path.exists():
+            with output_path.open("r", encoding="utf-8") as file:
+                for line in file:
+                    line = line.strip()
+                    if not line:
+                        continue
+
+                    try:
+                        existing = json.loads(line)
+                    except json.JSONDecodeError:
+                        # Don't treat malformed lines as matching records.
+                        continue
+
+                    if (
+                        existing.get("prompt_id")
+                        == response_data["prompt_id"]
+                        and existing.get("provider")
+                        == response_data["provider"]
+                        and existing.get("model")
+                        == response_data["model"]
+                    ):
+                        return output_path
+
+    with output_path.open("a", encoding="utf-8") as file:
+        file.write(
+            json.dumps(
+                response_data,
+                ensure_ascii=False,
+            )
+            + "\n"
+        )
+
+    return output_path
 
 def load_responses(filename: str) -> List[dict]:
     """

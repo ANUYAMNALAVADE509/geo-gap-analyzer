@@ -73,20 +73,36 @@ def build_brand_lookup(
     return lookup
 
 
+# Explicit aliases for verified brand-name variants.
+# Keys and values are normalized using normalize_name().
+BRAND_ALIASES = {
+    "mac cosmetics": "mac",
+    "dior beauty": "dior",
+}
+
+
 def match_brand(
     brand_name: str,
     lookup: dict,
 ):
-    normalized_name = normalize_name(
-        brand_name
-    )
+    normalized_name = normalize_name(brand_name)
 
     if not normalized_name:
         return None
 
-    return lookup.get(
-        normalized_name
-    )
+    # Try an exact match first.
+    matched_store = lookup.get(normalized_name)
+
+    if matched_store is not None:
+        return matched_store
+
+    # Try an explicitly configured alias.
+    canonical_name = BRAND_ALIASES.get(normalized_name)
+
+    if canonical_name is not None:
+        return lookup.get(canonical_name)
+
+    return None
 
 
 if __name__ == "__main__":
@@ -115,22 +131,24 @@ if __name__ == "__main__":
         "beauty_products_groq.jsonl"
     )
 
-    brand_response = next(
-        response
-        for response in responses
-        if response["query_id"] == "brand_01"
-    )
+    brand_responses = [
+    response
+    for response in responses
+    if response["query_id"].startswith("brand_01_")
+    ]
 
-    brands = extract_brands_from_response(
-        brand_response["query_id"],
-        brand_response["response_text"],
-    )
+    brands = []
+
+    for brand_response in brand_responses:
+        extracted = extract_brands_from_response(
+            brand_response["query_id"],
+            brand_response["response_text"],
+        )
+        brands.extend(extracted)
 
     print()
-    print(
-        f"Extracted brand mentions: "
-        f"{len(brands)}"
-    )
+    print(f"Brand responses processed: {len(brand_responses)}")
+    print(f"Extracted brand mentions: {len(brands)}")
 
     matched = 0
     unmatched = 0
@@ -140,7 +158,6 @@ if __name__ == "__main__":
     print("=" * 80)
 
     for brand in brands:
-
         matched_store = match_brand(
             brand["brand_name"],
             lookup,
@@ -162,13 +179,8 @@ if __name__ == "__main__":
 
     print()
     print("=" * 80)
-    print(
-        f"Matched:   {matched}"
-    )
-    print(
-        f"Unmatched: {unmatched}"
-    )
-    print(
-        f"Coverage:  "
-        f"{matched / len(brands) * 100:.2f}%"
-    )
+    print(f"Matched:   {matched}")
+    print(f"Unmatched: {unmatched}")
+
+    if brands:
+        print(f"Coverage:  {matched / len(brands) * 100:.2f}%")

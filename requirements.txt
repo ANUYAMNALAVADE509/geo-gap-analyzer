@@ -8,3 +8,7 @@ rapidfuzz
 vaderSentiment
 pytest
 tqdm
+celery
+redis
+requests
+groq

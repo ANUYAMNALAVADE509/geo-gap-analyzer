@@ -48,6 +48,45 @@ def clean_brand_name(value: str) -> str:
 
     return value.strip()
 
+
+def classify_brand_response(response_text: str) -> str:
+    """Classify whether a brand-list response is usable for extraction."""
+
+    text = (response_text or "").strip()
+
+    if not text:
+        return "empty_response"
+
+    # Detect provider/status messages rather than brand-list answers.
+    if re.fullmatch(
+        r"User Safety:\s*safe",
+        text,
+        flags=re.IGNORECASE,
+    ):
+        return "provider_status_response"
+
+    # Check for a Markdown table with a Brand column.
+    for line in text.splitlines():
+        stripped = line.strip()
+
+        if not stripped.startswith("|"):
+            continue
+
+        cells = [
+            cell.strip()
+            for cell in stripped.strip("|").split("|")
+        ]
+
+        headers = [
+            re.sub(r"[^a-z0-9]+", " ", cell.lower()).strip()
+            for cell in cells
+        ]
+
+        if "brand" in headers:
+            return "brand_table_found"
+
+    return "missing_brand_table"
+
 def is_separator_row(cells: List[str]) -> bool:
     if not cells:
         return False
@@ -66,7 +105,7 @@ def extract_brands_from_response(
     response_text: str,
 ) -> List[Dict]:
 
-    if query_id != "brand_01":
+    if not query_id.startswith("brand_01_"):
         return []
 
     brands = []
@@ -105,10 +144,8 @@ def extract_brands_from_response(
             for cell in cells
         ]
 
-        if "popular brands" in normalized_headers:
-            brand_column_index = normalized_headers.index(
-                "popular brands"
-            )
+        if "brand" in normalized_headers:
+            brand_column_index = normalized_headers.index("brand")
             active_brand_table = True
             current_position = 0
             continue
