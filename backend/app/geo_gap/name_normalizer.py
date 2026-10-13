@@ -19,6 +19,10 @@ def normalize_name(value: str) -> str:
 
     # Normalize Unicode characters.
     value = unicodedata.normalize("NFKD", value)
+    value = "".join(
+        char for char in value
+        if not unicodedata.combining(char)
+    )
 
     # Remove trademark/copyright symbols.
     value = re.sub(r"[®™©]", "", value)
