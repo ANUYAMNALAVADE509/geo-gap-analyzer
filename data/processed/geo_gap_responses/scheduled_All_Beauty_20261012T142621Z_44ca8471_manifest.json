@@ -1,0 +1,106 @@
+{
+  "created_at_utc": "2026-10-12T14:26:21.323777+00:00",
+  "task_count": 10,
+  "tasks": [
+    {
+      "task_id": "80c3cca9-4490-4888-9c67-26ea11517e20",
+      "prompt_id": "e248c7f8cd1f",
+      "query_id": "discovery_01_general",
+      "category": "All_Beauty",
+      "provider": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_groq_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "07018426-a917-425b-8b22-374de68e891f",
+      "prompt_id": "e248c7f8cd1f",
+      "query_id": "discovery_01_general",
+      "category": "All_Beauty",
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_openrouter_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "072ba22f-0705-4620-83d3-a496f77cf1c1",
+      "prompt_id": "e6c10bdee98d",
+      "query_id": "discovery_01_budget_conscious",
+      "category": "All_Beauty",
+      "provider": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_groq_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "122aabf5-5f49-4a51-8ffe-07bc8a20be13",
+      "prompt_id": "e6c10bdee98d",
+      "query_id": "discovery_01_budget_conscious",
+      "category": "All_Beauty",
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_openrouter_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "bcd7a628-68fc-4b96-927d-94cf744394d9",
+      "prompt_id": "30d8a174b449",
+      "query_id": "discovery_01_beginner",
+      "category": "All_Beauty",
+      "provider": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_groq_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "c3888deb-9d74-4cc4-898a-09041f6eff26",
+      "prompt_id": "30d8a174b449",
+      "query_id": "discovery_01_beginner",
+      "category": "All_Beauty",
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_openrouter_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "b91cc455-c6b1-4a26-8a1d-6e4c4f99be31",
+      "prompt_id": "2b88102ca66e",
+      "query_id": "discovery_01_sensitive_skin",
+      "category": "All_Beauty",
+      "provider": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_groq_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "f1720414-968f-41fc-ae0d-a3eeb1db2745",
+      "prompt_id": "2b88102ca66e",
+      "query_id": "discovery_01_sensitive_skin",
+      "category": "All_Beauty",
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_openrouter_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "a3291d14-bdc7-40a7-8a0e-4c0a53746b4a",
+      "prompt_id": "0ea7df23af16",
+      "query_id": "recommendation_01_general",
+      "category": "All_Beauty",
+      "provider": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_groq_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    },
+    {
+      "task_id": "4acec072-b1e4-4197-812a-68a067182e1f",
+      "prompt_id": "0ea7df23af16",
+      "query_id": "recommendation_01_general",
+      "category": "All_Beauty",
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "output_file": "scheduled_All_Beauty_20261012T142621Z_44ca8471_openrouter_responses.jsonl",
+      "run_id": "scheduled_All_Beauty_20261012T142621Z_44ca8471"
+    }
+  ]
+}
